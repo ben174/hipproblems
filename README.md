@@ -1,6 +1,8 @@
 # Hipmunk Problems
 This is a collection of (simplified) problems that we face at Hipmunk.
 
+- [Building a Flight Search API](https://github.com/Hipmunk/hipproblems/tree/master/searchrunner)
+
 # Installation
 
 *Only tested on Python 2.7*
