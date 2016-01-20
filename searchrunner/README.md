@@ -36,3 +36,7 @@ You may write your API in whatever language you want. It should run on port 8000
 - `GET /flights/search` - returns flight results from all providers as JSON
 
 The response should look identical to a scraper API response except that it will contain results from all providers while still sorted by agony.
+
+# Testing
+
+A basic test script has been included. To use it, make sure both the scraper API and your API are running then simply run `python -m searchrunner.scraperapi_test`.
