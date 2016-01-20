@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from tornado import gen
 
 
 class FlightResult(object):
@@ -31,14 +32,17 @@ class Scraper(object):
 
     provider = None
 
+    @gen.coroutine
     def run(self):
         self.results = []
 
-        self.load_results()
+        # wait a bit
+        yield gen.sleep(2)
 
+        self.load_results()
         self.results.sort(key=lambda r: r.agony)
 
-        return self.results
+        raise gen.Return(self.results)
 
     def load_results(self):
         raise NotImplementedError
@@ -46,10 +50,10 @@ class Scraper(object):
     def load_fake_results(self, range_iter):
         now = datetime.utcnow().replace(second=0, microsecond=0)
         for i in range_iter:
-            price = 1000 - 10 * i
+            price = 2000 - i
             flight_num = "UA%s" % (1000 + i)
             depart_time = now + timedelta(hours=i)
-            arrive_time = depart_time + timedelta(hours=1, minutes=5 * i)
+            arrive_time = depart_time + timedelta(hours=1, minutes=i / 20)
             self.add_result(
                 price,
                 flight_num,

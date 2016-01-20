@@ -1,9 +1,10 @@
-from tornado import ioloop, web
+from tornado import gen, ioloop, web
 from searchrunner.scrapers import get_scraper
 
 
 class ScraperApiHandler(web.RequestHandler):
 
+    @gen.coroutine
     def get(self, provider):
         scraper_cls = get_scraper(provider)
         if not scraper_cls:
@@ -14,7 +15,7 @@ class ScraperApiHandler(web.RequestHandler):
             return
 
         scraper = scraper_cls()
-        results = scraper.run()
+        results = yield scraper.run()
         self.write({
             "results": [r.serialize() for r in results],
         })
@@ -30,7 +31,10 @@ def run():
         ROUTES,
         debug=True,
     )
+
     app.listen(9000)
+    print "Server (re)started. Listening on port 9000"
+
     ioloop.IOLoop.current().start()
 
 
