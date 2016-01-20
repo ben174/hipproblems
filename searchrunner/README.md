@@ -10,7 +10,9 @@ For this problem, the scraper farm will be emulated by a simple web server.
 
 To start it, run `python -m searchrunner.scraperapi`. This should start a server listening on port 9000.
 
-This server exposes exactly one endpoint: `/scrapers/<provider>` which will return the flight results from that provider as JSON.
+This server exposes exactly one endpoint:
+
+- `GET /scrapers/<provider>` - returns flight results for the specified provider as JSON
 
 Here are the providers that are available:
 
@@ -29,4 +31,8 @@ Requirements:
 - The results should be sorted by agony
 - The scraper APIs already return results sorted by agony, you should take advantage of this!
 
-You may write your API in whatever language you want. It should run on port 8000 and expose exactly one endpoint: `/flights/search` which should return a JSON response. The JSON response should look identical to the scraper API response except that it will contain results from all providers, sorted by agony.
+You may write your API in whatever language you want. It should run on port 8000 and expose one endpoint:
+
+- `GET /flights/search` - returns flight results from all providers as JSON
+
+The response should look identical to a scraper API response except that it will contain results from all providers while still sorted by agony.
