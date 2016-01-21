@@ -5,6 +5,10 @@ This is a collection of (simplified) problems that we face at Hipmunk.
 
 # Installation
 
-*Only tested on Python 2.7*
+*Assumes you're using Python 2.7*
 
-Make sure you have [setuptools](https://pypi.python.org/pypi/setuptools) installed (run `which pip`). Then just clone this repo and run `python setup.py develop`.
+1. `git clone https://github.com/Hipmunk/hipproblems.git`
+2. `cd hipproblems`
+3. `python setup.py develop`
+
+If the setup script fails make sure you have [setuptools](https://pypi.python.org/pypi/setuptools) installed and try again.
