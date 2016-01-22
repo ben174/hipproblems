@@ -10,6 +10,6 @@ setup(
     include_package_data=True,
     install_requires=[
         "requests",
-        "tornado",
+        "tornado>=4.1",
     ],
 )
