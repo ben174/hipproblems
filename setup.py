@@ -9,7 +9,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        "requests",
+        "requests>=2.5.3",
         "tornado>=4.1",
     ],
 )
